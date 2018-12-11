@@ -1,6 +1,8 @@
  #include <stdio.h>   
  #include <string.h>
- 
+
+char * m_strtok(char *,char*);
+
  int main( ) 
 { 
    char *token = NULL; 
