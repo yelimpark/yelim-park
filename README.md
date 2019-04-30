@@ -1,4 +1,3 @@
 yelim park
 
-first
-second
+del
