@@ -1,0 +1,39 @@
+
+.presentation {
+  background-color: grey;
+  float: right;
+  width: 89%;
+  overflow: hidden;
+}
+.slide {
+  border: 2px solid blue;
+  margin: 5px;
+}
+
+#footer {
+  background-color: blue;
+}
+
+#header {
+  background-color: purple;
+}
+
+#controls {
+  background-color: yellow;
+}
+
+#currentSlide {
+  background-color: green;
+}
+
+#jumplist {
+  border: 5px solid pink;
+  height: 600px;
+  overflow: scroll;
+}
+
+.layout {
+  position: fixed;
+  width : 10%;
+  overflow: hidden;
+}
