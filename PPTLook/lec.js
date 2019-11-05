@@ -90,16 +90,12 @@ function createControls() {
         hideList = hider;
     }
     controlsDiv.innerHTML = '<form action="#" id="controlForm"' + hideDiv + '>' +
-    '<div id="navLinks">' +
-    //"<label for='enabledrawing'><input type='checkbox' id='enabledrawing' onclick='enableDrawingClick(this);' />" +
-    // "<img src='images/redpen.gif' alt='pen' title='draw on slide with red pen' style='width: 24px; height: 24px; margin-right: 10px;' /></label>" +
-//  '<input type='checkbox' name='enableHighlighter' value='enableHighlighter' id='enableHighlighter' onclick='enableHighlighter_onclick(this);' />' +
-//    '<label for='enableHighlighter'><img src='images/highlight.gif' alt='highlight' title='Highlighter' style="width: 32px; height: 32px; margin-right: 20px;" onclick='enableHighlighter_onclick(this);' /></label>' +
     '<div id="navaLinks">' +
-    '<a accesskey="z" id="prev" title="Previous Slide" href="javascript:go(-1);">&laquo;<\/a>' +
-    '<a accesskey="x" id="next" title="Next Slide" href="javascript:go(1);">&raquo;<\/a></div>' +
+    '<a accesskey="z" id="prev" title="Previous Slide" href="javascript:go(-1);">&lsaquo;<\/a>' +
+    '<span id="slideNum"> </span>' +
+    '<a accesskey="x" id="next" title="Next Slide" href="javascript:go(1);">&rsaquo;<\/a></div>' +
     '<div id="navList"' + hideList + '><ul id="jumplist" ><\/ul><\/div>' +
-    '<\/div><\/form>';
+    '<\/form>';
     if (controlVis == 'hidden') {
         var hidden = document.getElementById('navLinks');
     } else {
@@ -118,9 +114,24 @@ function fold(){
     }
 }
 
+function currentSlide() {
+    var sn = document.getElementById('slideNum');
+
+    sn.innerHTML = '<span id="snHere">' + snum + '<\/span> ' +
+        '<span id="snSep">\/<\/span> ' +
+        '<span id="snTotal">' + (smax-1) + '<\/span>';
+
+    if (snum == 0) {
+        location.hash = "";
+    } else {
+        location.hash = "slide" + snum;
+    }
+}
+
 function startup() {
   createControls();
   slideLabel();
+  currentSlide();
 }
 
 window.onload = startup;
