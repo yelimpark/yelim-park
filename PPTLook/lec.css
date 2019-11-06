@@ -1,8 +1,12 @@
+body {
+  margin : 0;
+  padding: 0;
+}
 
 .presentation {
   margin: 1%;
   float: right;
-  width: 78%;
+  width: 70%;
   overflow: hidden;
   font-family: 'Open Sans', sans-serif;
 }
@@ -20,19 +24,7 @@
   margin-top: 40%;
 }
 
-#header {
-
-}
-
-#controls {
-
-}
-
-#currentSlide {
-
-}
-
-#jumplist {
+#index {
   height: 600px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -44,29 +36,39 @@
 }
 
 .layout {
-  position: fixed;
   width : 19%;
+  position: fixed;
   overflow: hidden;
-  border-right: 2px solid #B2B2B3;
-  padding: 10px;
-  height: 100%;
 }
 
-a:link {
+a:link, a:visited {
   color: #414141;
   text-decoration: none;
 }
 
-a:visited {
-  color: #414141;
-  text-decoration: none;
-}
-
-#jumplist li:hover {
+#index li:hover {
   background-color: #BEBEBE;
 }
 
 #navaLinks {
   font-family: 'Nanum Gothic', sans-serif;
-  display: inline;
+}
+
+#fold {
+  width: 10%;
+  background-color: grey;
+  height : 600px;
+  float: right;
+}
+
+#fold img {
+  padding: 0;
+  border: 2px solids white;
+  border-radius: 15px;
+}
+
+#side {
+  float :left;
+  width : 90%;
+  height : 100%;
 }

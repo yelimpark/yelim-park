@@ -3,7 +3,6 @@ var DRAWING = false;
 
 var smax = 1;
 var snum = 0;
-var controlVis = 'visible';
 
 function nodeValue(node) {
     var result = "";
@@ -35,13 +34,20 @@ function GetElementsWithClassName(elementName,className) {
     return elemColl;
 }
 
-var slideIndexMap = [];
+function editHtml() {
+  var layoutDiv = document.getElementsByClassName("layout");
+  var layoutArr = (layoutDiv[0].innerHTML).split(/\n/g);
+  layoutDiv[0].innerHTML = '<div id="side">' +
+   layoutArr[1] + layoutArr[4] + layoutArr[5] + layoutArr[6] +layoutArr[7] +
+   '</div> <div id="fold"> <a href "javascript:fold();">+</a> </div>';
+}
+
+//var slideIndexMap = [];
 
 function slideLabel() {
     var slideColl = GetElementsWithClassName('*', 'slide');
-    var list = document.getElementById('jumplist');
+    var index = document.getElementById('index');
     smax = slideColl.length;
-    var liCount = 0;
 
     for (var n = 0; n < smax; n++) {
         var obj = slideColl[n];
@@ -61,7 +67,9 @@ function slideLabel() {
             otext += nodeValue(menunodes[o]);
         }
 
-        var value = n + ' : '  + otext ;
+        otext = otext.replace(/\r/g, "");
+        otext = otext.replace(/\n/g, "");
+        var value = n + ':' + otext ;
         if (hasClass(obj, 'titleslide') || hasClass(obj, 'lecturetitle')) {
             value = n + " : === " + otext + " ===";
         }
@@ -72,45 +80,31 @@ function slideLabel() {
 
         var li = document.createElement("li");
         li.appendChild(link);
-        list.appendChild(li);
-        slideIndexMap[n] = liCount;
-        liCount++;
+        index.appendChild(li);
+//        slideIndexMap[n] = n;
       }
 }
 
 function createControls() {
     var controlsDiv = document.getElementById("controls");
     if (!controlsDiv) return;
-    // var hider = ' onmouseover="showHide(\'s\');" onmouseout="showHide(\'h\');"';
-    var hider = '';
-    var hideDiv, hideList = '';
-    if (controlVis == 'hidden') {
-        hideDiv = hider;
-    } else {
-        hideList = hider;
-    }
-    controlsDiv.innerHTML = '<form action="#" id="controlForm"' + hideDiv + '>' +
+
+    controlsDiv.innerHTML = '<form action="#" id="controlForm">' +
     '<div id="navaLinks">' +
     '<a accesskey="z" id="prev" title="Previous Slide" href="javascript:go(-1);">&lsaquo;<\/a>' +
     '<span id="slideNum"> </span>' +
     '<a accesskey="x" id="next" title="Next Slide" href="javascript:go(1);">&rsaquo;<\/a></div>' +
-    '<div id="navList"' + hideList + '><ul id="jumplist" ><\/ul><\/div>' +
+    '<div id="navList"><ul id="index" ><\/ul><\/div>' +
     '<\/form>';
-    if (controlVis == 'hidden') {
-        var hidden = document.getElementById('navLinks');
-    } else {
-        var hidden = document.getElementById('jumplist');
-    }
-    // *** commented out by marty so that controls will always show
-    // addClass(hidden,'hideme');
 }
 
+
 function fold(){
-    var con = document.getElementByClassName("layout");
-    if(con.style.display=='none'){
-        con.style.display = 'block';
+    var sl = document.getElementById("slide");
+    if(sl.style.display=='none'){
+        sl.style.display = 'block';
     }else{
-        con.style.display = 'none';
+        sl.style.display = 'none';
     }
 }
 
@@ -128,10 +122,24 @@ function currentSlide() {
     }
 }
 
+function sideResizing() {
+  var lDiv = document.getElementsByClassName("layout");
+  lDiv[0].style.width = (window.innerWidth * (3/10)) + 'px';
+}
+
+function detectResize() {
+  jQuery(function($){
+    $(window).resize( sideResizing );
+    sideResizing();
+  });
+}
+
 function startup() {
+  editHtml();
   createControls();
   slideLabel();
   currentSlide();
+  detectResize();
 }
 
 window.onload = startup;
