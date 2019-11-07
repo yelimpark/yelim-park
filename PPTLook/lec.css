@@ -1,44 +1,64 @@
 body {
   margin : 0;
   padding: 0;
-}
-
-.presentation {
-  margin: 1%;
-  float: right;
-  width: 70%;
-  overflow: hidden;
   font-family: 'Open Sans', sans-serif;
-}
-.slide {
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 20px;
-  margin-bottom: 50px;
-  padding-left: 15px;
+  scrollbar-face-color: blue;
 }
 
-#footer {
-  font-size: 10pt;
-  font-family: 'Raleway', sans-serif;
-  margin-top: 40%;
+/* css for right (slide) section */
+.presentation {
+  margin : auto;
+}
+
+.slide {
+  font-size: 13pt;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+/* css for left section */
+
+.layout {
+  width : 25%;
+  position: fixed;
+  overflow: hidden;
+}
+
+#side {
+  width : 93%;
+  height : 100%;
+  float: left;
+}
+
+#controls {
+  display: inline-block;
+  width : 100%;
+}
+
+#navaLinks {
+  font-family: 'Nanum Gothic', sans-serif;
+  display: inline-block;
+  width : 80%;
+}
+
+#buttons {
+  width : 20%;
+  display: inline-block;
+}
+
+#buttons a img{
+  width : 23px;
+  height: 23px;
+  margin-right: 3px;
+  float: right;
 }
 
 #index {
-  height: 600px;
   overflow-y: scroll;
   overflow-x: hidden;
   border-top: 2px solid #B2B2B3;
   border-bottom: 2px solid #B2B2B3;
-  list-style: none;
   padding-left: 0;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.layout {
-  width : 19%;
-  position: fixed;
-  overflow: hidden;
 }
 
 a:link, a:visited {
@@ -50,25 +70,34 @@ a:link, a:visited {
   background-color: #BEBEBE;
 }
 
-#navaLinks {
-  font-family: 'Nanum Gothic', sans-serif;
+#footer {
+  font-size: 9pt;
+  font-family: 'Raleway', sans-serif;
+  margin-top: 10vh;
 }
 
 #fold {
-  width: 10%;
-  background-color: grey;
-  height : 600px;
-  float: right;
+  width: 7%;
+  background-color: #414141;
+  height: 100%;
+  float: left;
+  font-family: 'Nanum Gothic', sans-serif;
+  color: white;
 }
 
-#fold img {
-  padding: 0;
-  border: 2px solids white;
-  border-radius: 15px;
+#fold p {
+  margin-top: 45vh;
 }
 
-#side {
-  float :left;
-  width : 90%;
-  height : 100%;
-}
+body::-webkit-scrollbar{width: 16px;}
+body::-webkit-scrollbar-track {background-color:white;}
+body::-webkit-scrollbar-thumb {background-color:#414141;border-radius: 5px;}
+body::-webkit-scrollbar-thumb:hover {background: #555;}
+body::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+width:16px;height:16px;background:#414141;}
+#index::-webkit-scrollbar{width: 16px;}
+#index::-webkit-scrollbar-track {background-color:white;}
+#index::-webkit-scrollbar-thumb {background-color:#BEBEBE;border-radius: 5px;}
+#index::-webkit-scrollbar-thumb:hover {background: #555;}
+#index::-webkit-scrollbar-button:start:dec rement,::-webkit-scrollbar-button:end:increment {
+width:16px;height:16px;background:#BEBEBE;}
